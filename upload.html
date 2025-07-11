@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chest X-ray Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+       body {
+    background-color: #121212;
+    color: #f5f5f5;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    padding-bottom: 100px; /* Adding padding to the bottom to make room for the footer */
+}
+
+
+        .container {
+    margin-top: 50px;
+    padding-bottom: 80px; /* Ensures enough space between the content and footer */
+}
+
+        .navbar {
+            background-color: #1f1f1f;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .upload-form {
+            background-color: #222;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin-top: 30px;
+        }
+
+        .upload-form h2 {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .upload-form input[type="file"] {
+            border: 2px solid #444;
+            background-color: #333;
+            color: #f5f5f5;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        .upload-form button {
+            background-color: #ff6f61;
+            color: white;
+            font-weight: 600;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-form button:hover {
+            background-color: #e65c53;
+        }
+
+        .card {
+            background-color: #333;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+
+        .card h3 {
+            font-weight: 600;
+        }
+
+        .card img {
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+    max-width: 100%; /* Makes sure the image is responsive */
+    max-height: 300px; /* Limit height if needed */
+}
+
+
+        footer {
+    background-color: #1f1f1f;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensures footer is always above other content */
+}
+
+
+        .precaution-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .precaution-list li {
+            background-color: #444;
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        .precaution-list li:hover {
+            background-color: #ff6f61;
+        }
+
+        /* Spinner overlay */
+        .spinner-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .spinner-container.d-flex {
+            display: flex !important;
+        }
+
+        .spinner-border {
+            width: 6rem;
+            height: 6rem;
+            color: #ff6f61;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Spinner Overlay -->
+    <div class="spinner-container d-none" id="loading-spinner">
+        <div class="spinner-border" role="status"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="#">POST COVID LUNG DISEASE DETECTION</a>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+<div class="container">
+    <div class="card text-center mx-auto" style="max-width: 600px;">
+
+        <!-- Upload Form -->
+        {% if not label %}
+        <h3 class="mb-4">Upload a Chest X-ray</h3>
+        <form id="upload-form" action="/" method="POST" enctype="multipart/form-data">
+            <input class="form-control mb-3" type="file" name="file" required>
+            <button class="btn btn-primary px-4" type="submit">Upload & Predict</button>
+        </form>
+        {% endif %}
+
+        <!-- Prediction Results -->
+        {% if label %}
+        <h3 class="mb-3">Result</h3>
+        <p><strong>Predicted Class:</strong> {{ label }}</p>
+
+        <img src="{{ url_for('static', filename=file_path) }}" class="img-fluid" width="300" alt="Uploaded X-ray">
+
+        <h5 class="mt-4"><strong>Please take this Precautions </strong></h5>
+        <ul class="precaution-list">
+            {% for item in precautions %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+
+        <a href="/" class="btn btn-secondary reset-btn mt-4">Upload Another Image</a>
+        {% endif %}
+
+    </div>
+</div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 | Developed by CSMA15 | Guided by Mr. P. Sai Kumar
+    </footer>
+
+    <!-- Bootstrap Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Show Spinner -->
+    <script>
+        const form = document.getElementById("upload-form");
+        const spinner = document.getElementById("loading-spinner");
+
+        if (form) {
+            form.addEventListener("submit", function () {
+                spinner.classList.remove("d-none");
+                spinner.classList.add("d-flex");
+            });
+        }
+    </script>
+
+</body>
+</html>
