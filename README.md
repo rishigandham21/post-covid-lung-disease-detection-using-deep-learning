@@ -27,14 +27,6 @@ test.py: This script handles loading the trained model and making predictions on
 Setup and Installation 🛠️
 To get started with this project, follow these steps:
 
-Clone the repository:
-
-Bash
-
-git clone https://github.com/your-username/post-covid-lung-disease-detection-using-deep-learning.git
-cd post-covid-lung-disease-detection-using-deep-learning
-(Remember to replace your-username with your actual GitHub username or the repository's owner.)
-
 Create a virtual environment (recommended):
 
 Bash
