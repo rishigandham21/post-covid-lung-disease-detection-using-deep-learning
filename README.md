@@ -1,56 +1,71 @@
-# 🫁 Post-COVID Lung Disease Detection using Deep Learning 🧠📸
+# 🫁 Post-COVID Lung Disease Detection Using Deep Learning 💡
 
 ## 📖 About the Project
 
-International healthcare systems are facing unprecedented challenges due to the **COVID-19 pandemic**, especially in managing its **long-term respiratory effects**. Survivors often develop complications such as:
+International healthcare systems are facing unprecedented challenges due to the **COVID-19 pandemic**, especially in detecting and managing its long-term effects.
+
+👨‍⚕️ Survivors often develop:
 
 - 🫁 **Lung Fibrosis**
 - 🤒 **Pneumonia**
 - 🎗️ **Lung Cancer**
 
-These complications require **early and accurate detection** to ensure timely treatment. However, **resource constraints**, a **shortage of radiologists**, and the **subjective nature** of manual X-ray interpretation result in diagnostic delays and errors.
+However, factors like:
+- ⚠️ Limited medical resources
+- ⏱️ High patient workloads
+- ❌ Subjective X-ray interpretation
 
-### 💡 Our Solution
+...make diagnosis difficult and error-prone.
 
-This project introduces a **deep learning-based diagnostic system** powered by the 🧠 **Xception model**, a high-performance **Convolutional Neural Network (CNN)** designed for medical image analysis. Key benefits include:
+### ✅ Our Solution
 
-- ✅ **High Accuracy** in classifying COVID-related lung conditions  
-- ⚡ **Fast and Scalable** solution for high/low-resource environments  
-- 🌍 **Telemedicine Ready** — remote diagnosis through chest X-rays  
-- 🤖 **Reduces Radiologist Workload** with AI-assisted support
+This project presents an **AI-powered web application** that uses the 🧠 **Xception CNN model** to **classify chest X-ray images** into:
+
+- `COVID-19`
+- `Pneumonia`
+- `Normal`
+
+and also provides **precautionary health advice** based on the prediction.
 
 ---
 
 ## 🏗️ Tech Stack
 
-| Tool | Purpose |
-|------|---------|
-| TensorFlow/Keras 🧠 | Model Building & Training |
-| Xception Model 🧬 | Transfer Learning Backbone |
-| Matplotlib & Seaborn 📊 | Visualization |
-| NumPy 🧮 | Numerical Operations |
-| ImageDataGenerator 🖼️ | Data Augmentation & Preprocessing |
+| Component    | Technology               |
+|--------------|---------------------------|
+| 👨‍💻 Backend     | Python, Flask             |
+| 🤖 Model       | Xception (Transfer Learning) |
+| 📊 Visualization | Matplotlib, Seaborn        |
+| 🖼️ Frontend     | HTML5, Bootstrap 5         |
+| 🗂️ Preprocessing | OpenCV, NumPy, TensorFlow  |
 
 ---
 
 ## 📂 Dataset Structure
 
-The project expects a dataset structured as:
+The dataset should be organized into the following directory structure:
 
-## 🗂️ Dataset Structure
+| Split  | Class       | Folder Path                      |
+|--------|-------------|----------------------------------|
+| Train  | COVID-19    | `dataset/train/COVID/`           |
+|        | Normal      | `dataset/train/Normal/`          |
+|        | Pneumonia   | `dataset/train/Pneumonia/`       |
+| Val    | COVID-19    | `dataset/val/COVID/`             |
+|        | Normal      | `dataset/val/Normal/`            |
+|        | Pneumonia   | `dataset/val/Pneumonia/`         |
+| Test   | COVID-19    | `dataset/test/COVID/`            |
+|        | Normal      | `dataset/test/Normal/`           |
+|        | Pneumonia   | `dataset/test/Pneumonia/`        |
 
-| Set      | Class      | Folder Path                      |
-|----------|------------|----------------------------------|
-| Train    | COVID      | `dataset/train/COVID/`           |
-|          | Normal     | `dataset/train/Normal/`          |
-|          | Pneumonia  | `dataset/train/Pneumonia/`       |
-|----------|------------|----------------------------------|
-| Val      | COVID      | `dataset/val/COVID/`             |
-|          | Normal     | `dataset/val/Normal/`            |
-|          | Pneumonia  | `dataset/val/Pneumonia/`         |
-|----------|------------|----------------------------------|
-| Test     | COVID      | `dataset/test/COVID/`            |
-|          | Normal     | `dataset/test/Normal/`           |
-|          | Pneumonia  | `dataset/test/Pneumonia/`        |
+---
 
+## 🧠 Model Overview
 
+- 🔍 **Architecture**: Xception (Pretrained on ImageNet)
+- ⚙️ **Input Size**: 224x224
+- 🧪 **Output**: 3-class Softmax Layer
+- 🏷️ **Classes**: COVID-19, Pneumonia, Normal
+- 📉 **Loss Function**: Categorical Crossentropy
+- ⚙️ **Optimizers**: Adam (with learning rate tuning)
+
+---
