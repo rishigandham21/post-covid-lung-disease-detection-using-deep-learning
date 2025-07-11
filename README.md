@@ -50,16 +50,23 @@ Pneumonia 🤒
 You'll need to organize your dataset into the following directory structure:
 
 your_dataset/
+
 ├── train/
+
 │   ├── COVID/
 │   ├── Normal/
 │   └── Pneumonia/
+
 ├── val/
+
 │   ├── COVID/
 │   ├── Normal/
 │   └── Pneumonia/
+
 └── test/
+
     ├── COVID/
     ├── Normal/
     └── Pneumonia/
+    
 Before running the scripts, make sure to update the TRAIN_DIR, VAL_DIR, and TEST_DIR variables in both main.py and test.py with the correct paths to your dataset.
