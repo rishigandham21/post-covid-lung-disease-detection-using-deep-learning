@@ -63,10 +63,10 @@ your_dataset/
 │   ├── Normal/
 │   └── Pneumonia/
 
-└── test/
+├── test/
 
-    ├── COVID/
-    ├── Normal/
-    └── Pneumonia/
+│   ├── COVID/
+│   ├── Normal/
+│   └── Pneumonia/
     
 Before running the scripts, make sure to update the TRAIN_DIR, VAL_DIR, and TEST_DIR variables in both main.py and test.py with the correct paths to your dataset.
