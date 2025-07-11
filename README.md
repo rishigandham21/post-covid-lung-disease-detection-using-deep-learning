@@ -36,17 +36,17 @@ This project introduces a **deep learning-based diagnostic system** powered by t
 ## 📂 Dataset Structure
 
 The project expects a dataset structured as:
-
 dataset/
 ├── train/
-│ ├── COVID/
-│ ├── Normal/
-│ └── Pneumonia/
+│   ├── COVID/
+│   ├── Normal/
+│   └── Pneumonia/
 ├── val/
-│ ├── COVID/
-│ ├── Normal/
-│ └── Pneumonia/
+│   ├── COVID/
+│   ├── Normal/
+│   └── Pneumonia/
 └── test/
-├── COVID/
-├── Normal/
-└── Pneumonia/
+    ├── COVID/
+    ├── Normal/
+    └── Pneumonia/
+
