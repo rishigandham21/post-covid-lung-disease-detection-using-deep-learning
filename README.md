@@ -1,66 +1,52 @@
-Post-COVID Lung Disease Detection using Deep Learning 🫁💡
+# 🫁 Post-COVID Lung Disease Detection using Deep Learning 🧠📸
 
-About the Project 🚀
-The global healthcare system is grappling with the enduring impact of the COVID-19 pandemic, particularly concerning the long-term respiratory complications experienced by survivors. Conditions like lung fibrosis, pneumonia, and even lung cancer are frequently observed, making early and accurate detection crucial for effective treatment. However, traditional diagnostic methods face significant hurdles:
+## 📖 About the Project
 
-Resource limitations 🏥
+International healthcare systems are facing unprecedented challenges due to the **COVID-19 pandemic**, especially in managing its **long-term respiratory effects**. Survivors often develop complications such as:
 
-Heavy patient workloads 🥵
+- 🫁 **Lung Fibrosis**
+- 🤒 **Pneumonia**
+- 🎗️ **Lung Cancer**
 
-Shortage of qualified radiologists 👩‍⚕️👨‍⚕️
+These complications require **early and accurate detection** to ensure timely treatment. However, **resource constraints**, a **shortage of radiologists**, and the **subjective nature** of manual X-ray interpretation result in diagnostic delays and errors.
 
-Inherent subjectivity of manual chest X-ray interpretation 📝, leading to delays and diagnostic errors.
+### 💡 Our Solution
 
-This project introduces an innovative solution that leverages the Xception model, an advanced deep neural network, to significantly enhance the accuracy and efficiency of medical image analysis. Built on a sophisticated Convolutional Neural Network (CNN) architecture, the Xception model excels at recognizing complex patterns and detecting subtle abnormalities in chest X-rays. Its advanced algorithms empower the early identification of lung-related conditions, facilitating proactive medical intervention and reducing the dependency on human expertise.
+This project introduces a **deep learning-based diagnostic system** powered by the 🧠 **Xception model**, a high-performance **Convolutional Neural Network (CNN)** designed for medical image analysis. Key benefits include:
 
-A key strength of this Xception-based system is its scalability, allowing it to process large volumes of patient data efficiently in diverse healthcare settings, from high-resource hospitals to low-resource clinics. Furthermore, this model significantly enhances telemedicine applications by enabling remote analysis of chest X-rays, ensuring that patients in underserved areas receive timely and accurate diagnoses.
+- ✅ **High Accuracy** in classifying COVID-related lung conditions  
+- ⚡ **Fast and Scalable** solution for high/low-resource environments  
+- 🌍 **Telemedicine Ready** — remote diagnosis through chest X-rays  
+- 🤖 **Reduces Radiologist Workload** with AI-assisted support
 
-The integration of the Xception model into medical imaging represents a pivotal advancement in healthcare, especially for diagnosing respiratory illnesses exacerbated by the COVID-19 pandemic. By improving diagnostic accuracy and reducing the workload of medical professionals, this approach holds immense potential to elevate patient outcomes and bolster the long-term management of post-COVID lung diseases.
+---
 
-Project Structure 📁
-The repository contains two main Python scripts:
+## 🏗️ Tech Stack
 
-main.py: This script is responsible for training and saving the deep learning model.
+| Tool | Purpose |
+|------|---------|
+| TensorFlow/Keras 🧠 | Model Building & Training |
+| Xception Model 🧬 | Transfer Learning Backbone |
+| Matplotlib & Seaborn 📊 | Visualization |
+| NumPy 🧮 | Numerical Operations |
+| ImageDataGenerator 🖼️ | Data Augmentation & Preprocessing |
 
-test.py: This script handles loading the trained model and making predictions on new or existing test images.
+---
 
-Setup and Installation 🛠️
-To get started with this project, follow these steps:
+## 📂 Dataset Structure
 
-Create a virtual environment (recommended):
+The project expects a dataset structured as:
 
-Bash
-
-python -m venv venv
-source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-Install the required libraries:
-
-Bash
-
-pip install tensorflow numpy matplotlib scikit-learn seaborn
-Dataset 📊
-This project requires a dataset of chest X-ray images categorized into:
-
-COVID-19 🦠
-
-Normal ✅
-
-Pneumonia 🤒
-
-You'll need to organize your dataset into the following directory structure:
-
-your_dataset/
+dataset/
 ├── train/
-│   ├── COVID/
-│   ├── Normal/
-│   └── Pneumonia/
+│ ├── COVID/
+│ ├── Normal/
+│ └── Pneumonia/
 ├── val/
-│   ├── COVID/
-│   ├── Normal/
-│   └── Pneumonia/
+│ ├── COVID/
+│ ├── Normal/
+│ └── Pneumonia/
 └── test/
-    ├── COVID/
-    ├── Normal/
-    └── Pneumonia/
-    
-Before running the scripts, make sure to update the TRAIN_DIR, VAL_DIR, and TEST_DIR variables in both main.py and test.py with the correct paths to your dataset.
+├── COVID/
+├── Normal/
+└── Pneumonia/
